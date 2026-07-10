@@ -1,0 +1,11 @@
+# MATLAB / Simulink
+slprj/
+*.slxc
+*.asv
+*.autosave
+*.m~
+octave-workspace
+
+# OS
+.DS_Store
+Thumbs.db
