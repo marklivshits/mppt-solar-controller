@@ -3,7 +3,7 @@
 
 pv_params;
 
-V = linspace(0, Voc_stc, 500);
+V = linspace(0, 0.99*Voc_stc, 500);
 I = zeros(size(V));
 
 % solve implicit eq. by fixed-point iteration
