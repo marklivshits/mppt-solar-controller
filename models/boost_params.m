@@ -9,6 +9,7 @@ Vin_nom  = 26.3;      % V, panel Vmp (nominal)
 L = 1e-3;             % H, inductor
 C = 470e-6;           % F, output capacitor
 fs = 20e3;            % Hz, switching freq (ref only, averaged model)
+Cin = 100e-6;         % F, input capacitor (panel-converter buffer)
 
 % load (battery side)
 R_load = Vout_ref^2 / 200;   % Ohm, ~matched to 200 W
