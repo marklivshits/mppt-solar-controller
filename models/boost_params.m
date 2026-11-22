@@ -10,7 +10,8 @@ L = 1e-3;             % H, inductor
 C = 470e-6;           % F, output capacitor
 fs = 20e3;            % Hz, switching freq (ref only, averaged model)
 Cin = 100e-6;         % F, input capacitor (panel-converter buffer)
-Ts = 1e-3;        % MPPT update period, s
+Ts = 5e-3;        % MPPT update period, s (was 1e-3, faster than LC settling)
+
 
 % load (battery side)
 R_load = Vout_ref^2 / 200;   % Ohm, ~matched to 200 W
