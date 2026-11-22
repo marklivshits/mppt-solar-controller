@@ -42,3 +42,6 @@ plot(V, P, 'LineWidth', 1.6); grid on; hold on;
 plot(Vmp, Pmax, 'ro', 'MarkerFaceColor', 'r');
 xlabel('V, V'); ylabel('P, W'); title('P-V curve');
 legend('P-V', 'MPP', 'Location', 'northwest');
+theme(gcf, 'light');
+if ~exist('../figures', 'dir'), mkdir('../figures'); end
+exportgraphics(gcf, '../figures/pv_curves.png', 'Resolution', 300);

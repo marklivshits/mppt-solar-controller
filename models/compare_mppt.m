@@ -68,8 +68,10 @@ for ti = 1:numel(temps)
                 names{m}, eff1, eff2, rip1, rip2, t_set);
     end
 
-    %% plot for current temperature
-    figure('Name', sprintf('MPPT comparison (%d C)', Tc), 'Position', [100+40*ti 100 950 680]);
+    %% plot for current temperature (light theme, 300 dpi export)
+    fig = figure('Name', sprintf('MPPT comparison (%d C)', Tc), ...
+        'Position', [100+40*ti 100 900 680]);
+    theme(fig, 'light');
 
     subplot(3,1,1); hold on; grid on;
     for m = 1:3
@@ -79,14 +81,14 @@ for ti = 1:numel(temps)
     yline(Pmax2, ':k');
     ylim([50 215]);
     ylabel('P, W');
-    title(sprintf('PV Power at T = %d ^\\circC (G: 1000 -> 600 W/m^2 at t = 5 s)', Tc));
+    title(sprintf('PV Power at T = %d ^\\circC (G: 1000 \\rightarrow 600 W/m^2 at t = 5 s)', Tc));
     legend(names, 'Location', 'northeast');
 
     subplot(3,1,2); hold on; grid on;
     for m = 1:3
         plot(TD_all{m}, D_all{m}, 'LineWidth', 1.3);
     end
-    ylim([0.25 0.52]);
+    ylim([0.05 0.55]);
     ylabel('D'); title('Duty cycle');
 
     subplot(3,1,3); hold on; grid on;
@@ -95,6 +97,9 @@ for ti = 1:numel(temps)
     end
     xlim([4.9 6.2]); ylim([50 205]);
     xlabel('t, s'); ylabel('P, W'); title('Step response zoom');
+
+    if ~exist('../figures', 'dir'), mkdir('../figures'); end
+    exportgraphics(fig, sprintf('../figures/mppt_%dC.png', Tc), 'Resolution', 300);
 end
 
 %% helper: theoretical Pmax from single-diode model
